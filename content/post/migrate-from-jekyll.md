@@ -1,12 +1,10 @@
 ---
 date: 2014-03-10
 linktitle: Migrating from Jekyll
-menu:
-  main:
-    parent: tutorials
 prev: /tutorials/mathjax
 title: Migrate to Hugo from Jekyll
 weight: 10
+description: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum similique, ipsum officia amet blanditiis provident ratione nihil ipsam dolorem repellat.
 ---
 
 ## Move static content to `static`
@@ -59,6 +57,7 @@ As an example, I was using a custom [`image_tag`](https://github.com/alexandre-n
 
 Jekyll's plugin:
 
+```ruby
     module Jekyll
       class ImageTag < Liquid::Tag
         @url = nil
@@ -112,6 +111,7 @@ Jekyll's plugin:
       end
     end
     Liquid::Template.register_tag('image', Jekyll::ImageTag)
+```
 
 is written as this Hugo shortcode:
 

@@ -1,6 +1,5 @@
 +++
 title = "(Hu)go Template Primer"
-description = ""
 tags = [
     "go",
     "golang",
@@ -13,7 +12,7 @@ categories = [
     "Development",
     "golang",
 ]
-menu = "main"
+description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum similique, ipsum officia amet blanditiis provident ratione nihil ipsam dolorem repellat."
 +++
 
 Hugo uses the excellent [go][] [html/template][gohtmltemplate] library for

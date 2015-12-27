@@ -1,6 +1,5 @@
 +++
 title = "Getting Started with Hugo"
-description = ""
 tags = [
     "go",
     "golang",
@@ -12,7 +11,7 @@ categories = [
     "Development",
     "golang",
 ]
-menu = "main"
+description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum similique, ipsum officia amet blanditiis provident ratione nihil ipsam dolorem repellat."
 +++
 
 ## Step 1. Install Hugo
