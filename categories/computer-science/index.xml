@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Computer Science on JR&#39;s tech blog</title>
+    <link>http://jrusev.github.io/categories/computer-science/</link>
+    <description>Recent content in Computer Science on JR&#39;s tech blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 05 Jun 2015 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://jrusev.github.io/categories/computer-science/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Computer Science as an Abstract Form of Engineering</title>
+      <link>http://jrusev.github.io/post/abstract-engineering/</link>
+      <pubDate>Fri, 05 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://jrusev.github.io/post/abstract-engineering/</guid>
+      <description>&lt;p&gt;I recently came upon a lecture on &lt;a href=&#34;http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-001-structure-and-interpretation-of-computer-programs-spring-2005/video-lectures/&#34;&gt;The Structure and Interpretation of Computer Programs&lt;/a&gt; by Hal Abelson and Jay Sussman from 1986, which compared computer science to other forms of engineering. I always thought software engineering had some fundamental property that made it more powerful than let&amp;rsquo;s say electrical or chemical engineering, but I couldn&amp;rsquo;t quite express what that property was.&lt;/p&gt;
+
+&lt;p&gt;The answer is that &lt;em&gt;computer science is like an abstract form of engineering&lt;/em&gt;, as Abelson puts it - &lt;strong&gt;the constraints imposed in building large software systems are the limitations of our own minds.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;This is an abstract of that first lecture:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Computer science, in some sense, isn&amp;rsquo;t real. You see, when an engineer is designing a physical system, that&amp;rsquo;s made out of real parts. The engineers who worry about that have to address problems of tolerance and approximation and noise in the system.&lt;/p&gt;
+
+&lt;p&gt;Computer science deals with idealized components. We know as much as we want about
+these little program and data pieces that we&amp;rsquo;re fitting things together. We don&amp;rsquo;t have to
+worry about tolerance. And that means that, &lt;strong&gt;in building a large program, there&amp;rsquo;s not all that much difference between what I can build and what I can imagine.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;So as opposed to other kinds of engineering, where the constraints on what you can build are the constraints of physical systems, the constraints of physics and noise and approximation, the constraints imposed in building large software systems are the limitations of our own minds.&lt;/p&gt;
+
+&lt;p&gt;So in that sense, computer science is like an abstract form of engineering. It&amp;rsquo;s the kind of engineering where you ignore the constraints that are imposed by reality.&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Telerik Academy on JR&#39;s tech blog</title>
+    <link>http://jrusev.github.io/tags/telerik-academy/</link>
+    <description>Recent content in Telerik Academy on JR&#39;s tech blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 07 Feb 2015 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://jrusev.github.io/tags/telerik-academy/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Thanks Telerik Academy</title>
+      <link>http://jrusev.github.io/post/thanks-telerik/</link>
+      <pubDate>Sat, 07 Feb 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://jrusev.github.io/post/thanks-telerik/</guid>
+      <description>&lt;p&gt;So I have finally finished the &lt;a href=&#34;http://academy.telerik.com/&#34;&gt;Telerik Software Academy&lt;/a&gt; and it was a transforming experience. Before I
+started the Academy I asked some friends of mine who were developers, if it is
+possible to become a junior level developer in 1 year starting from zero. I
+didn&amp;rsquo;t exactly start from zero, I learned BASIC and Assembler when I was a kid,
+and later enough C++ to write a Bulls &amp;amp; Cows game, but I knew nothing about
+modern web or game development. No idea what JavaScript, CSS or OOP was. And so
+were most of the other students.&lt;/p&gt;
+
+&lt;p&gt;Now I know for certain that it is possible to become a junior developer in about
+12 months. The numbers prove it - every one I know from the Academy found a job
+within a couple of months after graduation. But statistics are not all. What
+they don&amp;rsquo;t show is the enormous amount of work and stress and dedication
+required to complete all the exams at the Academy with excellence. I have
+probably put about 16 hours a day for 12 straight months to study and write code.
+Here is the punch card of my Telerik Academy &lt;a href=&#34;https://github.com/jrusev/TelerikAcademy&#34;&gt;repo&lt;/a&gt; where I put all my homework
+assignments and team projects:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://jrusev.github.io/img/punch-card.png&#34; alt=&#34;Punch Card&#34; /&gt;
+&lt;!-- 
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://jrusev.github.io/img/punch-card.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+ --&gt;&lt;/p&gt;
+
+&lt;p&gt;And check this guy&amp;rsquo;s &lt;a href=&#34;https://github.com/jasssonpet/TelerikAcademy/graphs/punch-card&#34;&gt;repo&lt;/a&gt;, who I think is
+one of the best students ever completed the Academy and who writes the most
+elegant code I&amp;rsquo;ve ever seen (he is now working on the &lt;a href=&#34;https://www.nativescript.org/&#34;&gt;NativeScript&lt;/a&gt; runtime). It looks like he didn&amp;rsquo;t sleep :)&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ve estimated that we have put a total of over 100 hours just in sitting for
+exams (16 exams of 6-8 hours each). And the competition was really intense -
+about 1500 students enrolled in the class of &lt;sup&gt;2013&lt;/sup&gt;&amp;frasl;&lt;sub&gt;2014&lt;/sub&gt; and 150 graduated with a &lt;a href=&#34;http://telerikacademy.com/Certificates/View/930/bee16b8e&#34;&gt;certificate&lt;/a&gt; (that
+means they took all exams with excellence). We were using an automated scoring
+system (&lt;a href=&#34;http://bgcoder.com/&#34;&gt;BGCoder&lt;/a&gt;) which showed live results during the
+exams (similar to &lt;a href=&#34;http://www.topcoder.com/&#34;&gt;TopCoder&lt;/a&gt;) and there were always
+some people who solved the problems super fast and even left early. So our
+teachers made the problems so hard, that only 1 or 2 people could solve all
+problems and sometimes no one had the maximum possible result. So when you got
+in the top 10, you were pretty darn happy about it :) I knew that the toughest
+exam was Data Structures and Algorithms, and if I wanted to become a software
+engineer I had to ace that exam. So I studied really hard and I solved all
+problems at the exam and got to the 3rd place. That was pretty awesome :)&lt;/p&gt;
+
+&lt;p&gt;I think what makes the Academy so successful is the way the program is
+structured. Instead of going straight to studying a technology (like databases,
+a web framework, or mobile applications), you first build a good foundation
+covering algorithms, data structures, object oriented programming and high
+quality code principles. You go from building basic console applications,
+through simple static html pages, more dynamic javascript applications and
+finally full scale database driven business applications. You go from the more
+simple and concrete to the more complex and abstract, with practically no gaps.
+We also have some super smart trainers (national coding competition winners) who
+really care about their students.&lt;/p&gt;
+
+&lt;p&gt;So thank you Telerik Academy for the excellent training and the challenges along
+the way! Now its my turn to use technology to solve some real world problems.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Telerik Academy Demos</title>
+      <link>http://jrusev.github.io/post/telerik-demos/</link>
+      <pubDate>Sun, 19 Oct 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://jrusev.github.io/post/telerik-demos/</guid>
+      <description>&lt;p&gt;Here are some of the applications I worked on while studying at the
+&lt;a href=&#34;http://academy.telerik.com/&#34;&gt;Telerik Software Academy&lt;/a&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://jrusev.github.io/demos/LetterpressJS&#34;&gt;LetterpressJS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://jrusev.github.io/demos/Tic-Tac-Toe&#34;&gt;Tic-Tac-Toe&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://itemex.herokuapp.com/&#34;&gt;itemex.herokuapp.com&lt;/a&gt; / &lt;a href=&#34;http://adlist.apphb.com/&#34;&gt;adList.apphb.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/jrusev/SimplyChat-iOS&#34;&gt;SimplyChat for iOS&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;LetterpressJS is a javascript implementation of the word game Letterpress by
+&lt;a href=&#34;http://www.atebits.com/letterpress/&#34;&gt;atebits&lt;/a&gt;. The web app brings the fluid
+experience of the iOS game to the browser. Pick letters to form a word and drag
+the tiles around to see how they interact with other tiles.&lt;/p&gt;
+
+&lt;p&gt;Tic-Tac-Toe is single-page web application that allows you to play online against
+other players. The client is powered by AngularJS, and uses a REST service with
+ASP.NET Web API hosted on AppHarbor.&lt;/p&gt;
+
+&lt;p&gt;ItemEx is an online marketplace for used items. It allows users to create a
+profile, post ads, view other people&amp;rsquo;s ads, send messages and receive push
+notifications. Admins can manage users and ads. The application is built on the
+MEAN stack - MongoDB, Express, AngularJS and Node.js. I also developed the same
+application using ASP.NET MVC and SQL Server
+(&lt;a href=&#34;http://adlist.apphb.com/&#34;&gt;adList.apphb.com&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;SimplyChat is a real-time chat application for iOS. It&amp;rsquo;s a native app written in
+Objective-C. I wrote the backend as a REST service running on Node.js and
+MongoDB. For the moment the app has only the basic functionality, but I will
+develop it into a more polished app with features such as group chat, photo
+messages, etc.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

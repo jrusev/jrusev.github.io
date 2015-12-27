@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Abouts on JR&#39;s tech blog</title>
+    <link>http://jrusev.github.io/about/</link>
+    <description>Recent content in Abouts on JR&#39;s tech blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 01 Jan 2015 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://jrusev.github.io/about/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>About me</title>
+      <link>http://jrusev.github.io/about/</link>
+      <pubDate>Thu, 01 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://jrusev.github.io/about/</guid>
+      <description>&lt;p&gt;My name is &lt;strong&gt;Jivko Rusev&lt;/strong&gt; (&lt;em&gt;JR&lt;/em&gt; for short) and I am a &lt;em&gt;software engineer&lt;/em&gt;. I am
+passionate about cutting-edge technologies and I like finding simple and
+elegant solutions to complex problems. I started this blog as a place to
+share my journey through the world of software.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

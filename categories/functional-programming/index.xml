@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Functional Programming on JR&#39;s tech blog</title>
+    <link>http://jrusev.github.io/categories/functional-programming/</link>
+    <description>Recent content in Functional Programming on JR&#39;s tech blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 31 May 2015 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://jrusev.github.io/categories/functional-programming/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>4Clojure Solutions</title>
+      <link>http://jrusev.github.io/post/4clojure-solutions/</link>
+      <pubDate>Sun, 31 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://jrusev.github.io/post/4clojure-solutions/</guid>
+      <description>&lt;p&gt;For some time I wanted to dab into functional programming and see how different
+it is from the procedural approach. Since three of my colleagues at
+&lt;a href=&#34;https://tradeo.com/&#34;&gt;Tradeo.com&lt;/a&gt; are Clojure masters (one of them wrote the
+&lt;a href=&#34;https://github.com/bbatsov/clojure-style-guide&#34;&gt;Clojure Style Guide&lt;/a&gt;,
+&lt;a href=&#34;https://github.com/clojure-emacs/cider&#34;&gt;CIDER&lt;/a&gt; and
+&lt;a href=&#34;https://github.com/bbatsov/projectile&#34;&gt;Projectile&lt;/a&gt;, and the other teaches
+Clojure to CS students), it looked like the obvious choice. Although there are
+other functional languages worth exploring, I realized that there is something
+special about Clojure, that made me commit to studying it in depth.&lt;/p&gt;
+
+&lt;p&gt;Because you learn a new programming language through your fingers, I decided to
+solve as many problems as I can from &lt;a href=&#34;http://www.4clojure.com/&#34;&gt;4Clojure&lt;/a&gt;.
+So &lt;a href=&#34;https://github.com/jrusev/fourclojure-solutions&#34;&gt;here&lt;/a&gt; is my repo with the
+solutions. What&amp;rsquo;s great about the site is that after you solve a problem, you
+can see how other people have solved it. I have subscribed to some of the top
+users, and it is a great way to learn how to write idiomatic Clojure.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
