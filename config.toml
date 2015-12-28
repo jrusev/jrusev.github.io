@@ -1,35 +1,37 @@
-baseurl = "http://replace-this-with-your-domain.com/"
+baseurl = "http://jrusev.github.io/"
 languageCode = "en-us"
-title = "Steam - a minimal theme for Hugo"
+title = "JR's tech blog"
 theme = "hugo-steam-theme"
-disqusShortname = "spf13"
-paginate = 10
+# disqusShortname = ""
+paginate = 3
 
 [params]
 
-  title = "Steam"
-  subtitle = "a minimal theme for ~~Ghost~~ Hugo"
-  copyright = "Released under the MIT license."
+  title = "JR's Tech Blog"
+  subtitle = "bits of thoughts"
+  copyright = "" # "All rights reserved."
 
   # You can choose between green, orange, red and blue.
   themeColor = "green"
-  # Enable Google Analytics be inserting your tracking code
+  # Enable Google Analytics by inserting your tracking code
   googleAnalytics = ""
 
   # To provide some metadata for search engines and the about section in the footer
   # feel free to add a few information about you and your website.
-  name = "John Doe"
-  bio = "I'm just a theme. That's it. If you like my design clone [me](//github.com/digitalcraftsman/hugo-steam-theme) from Github. Thanks."
-  description = "Your description of the blog"
+  name = "Jivko Rusev"
+  bio = "Software engineer"
+  description = "Sharing my thoughts on technology"
   location = "" # optional
-  twitter = "spf13" # optional
-  github = "spf13" # optional
+  twitter = "JivkoRusev" # optional
+  github = "jrusev" # optional
+  facebook = "jkrusev" # optional
+  linkedin = "jrusev" # optional
 
   # Enable a comment system
   # You can choose between Disqus or Google Plus by setting comments
   # to disqus or googleplus. For using Disqus you need to enter your
   # shortname in disqusShortname at the top of the configs.
-  comments = "disqus"
+  # comments = "disqus"
 
   # Customize or translate the strings
   keepReadingStr = "Keep reading"
