@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>Hacking MNIST in 30 lines of Python &middot; JR&#39;s tech blog</title>
+    <meta name="author" content="Jivko Rusev">
+    <meta name="description" content="Sharing my thoughts on technology">
+    <meta name="generator" content="Hugo 0.15" />
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <link rel="shortcut icon" href="http://jrusev.github.io/img/favicon.ico">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/2.1.2/normalize.min.css">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="http://jrusev.github.io/css/screen.css">
+    <link rel="stylesheet" href="http://jrusev.github.io/css/github.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/styles/default.min.css">
+
+    <!-- Stylesheet for theme color -->
+    <style type="text/css">
+    a, a:visited {color: #33cc99;}
+    .pagination a {color: #33cc99;}
+    .gist .gist-file .gist-meta a:visited {color: #33cc99 !important;}
+    a:focus, a:hover {color: #178b6b;}
+    h1.post-title a:focus, h1.post-title a:hover, h1.blog-title a:focus, h1.blog-title a:hover {color: #178b6b;}
+    .older-posts:hover, .newer-posts:hover {color: #178b6b;}
+</style>
+</head>
+<body class="post-template">
+
+    <header id="site-head">
+	
+	<h1 class="blog-title"><a href="http://jrusev.github.io/">JR&rsquo;s Tech Blog</a></h1>
+	
+	
+	<h1 class="blog-subtitle">bits of thoughts</h1>
+	
+</header>
+    
+<nav class="menu" role="nav">
+    <ul>
+        
+        	<li class="nav nav-current"><a href="/about/">About me</a></li>
+      	
+    </ul>
+</nav>
+
+
+    <main class="content" role="main">
+	    <article class="post">
+	        <header>
+	        <h1 class="post-title">Hacking MNIST in 30 lines of Python</h1>
+	        <div class="post-meta"><time datetime="29 December 2015">29 December 2015</time></div>
+	        </header>
+
+	        <section class="post-content">
+	            
+
+<p>In order to better understand neural networks, I wanted to see one implemented
+with a minimal amount of code. I quickly found a neural network in
+<a href="http://iamtrask.github.io/2015/07/12/basic-python-network/">11 lines of Python</a>.
+It&rsquo;s a great little piece of code that learns the XOR function and shows the
+backpropagation in action. I felt however, that I needed a slightly more complex
+example - a neural net that could recognize handwritten digits from the
+<a href="http://yann.lecun.com/exdb/mnist/">MNIST dataset</a>:</p>
+
+<p><img src="/img/mnist_digits.png" alt="MNIST Digits" /></p>
+
+<p>Michael Nielsen&rsquo;s
+<a href="http://neuralnetworksanddeeplearning.com/">great book</a> on neural networks is
+built upon just this classification problem, but the simplest implementation is
+<a href="https://github.com/mnielsen/neural-networks-and-deep-learning/blob/master/src/network.py">140 lines</a>
+of code (or 74 without the comments). So I took that code and refactored it down
+to 30 lines. Here it is (GitHub
+<a href="https://github.com/jrusev/simple-neural-networks/blob/master/src/mlp_numpy.py">repo</a>):</p>
+
+<pre><code class="language-python">import numpy as np
+import mnist
+
+def feed_forward(X, weights):
+    a = [X]
+    for w in weights:
+        a.append(sigmoid(a[-1].dot(w)))
+    return a
+
+def grads(X, Y, weights):
+    grads = np.empty_like(weights)
+    a = feed_forward(X, weights)
+    delta = a[-1] - Y # cross-entropy
+    grads[-1] = np.dot(a[-2].T, delta)
+    for i in xrange(len(a)-2, 0, -1):
+        delta = np.dot(delta, weights[i].T) * d_sigmoid(a[i])
+        grads[i-1] = np.dot(a[i-1].T, delta)
+    return grads / len(X)
+
+sigmoid = lambda x: 1 / (1 + np.exp(-x))
+d_sigmoid = lambda y: y * (1 - y)
+
+(trX, trY), _, (teX, teY) = mnist.load_data(one_hot=True)
+
+weights = [
+    np.random.randn(784, 100) / np.sqrt(784),
+    np.random.randn(100, 10) / np.sqrt(100)]
+num_epochs, batch_size, learn_rate = 30, 10, 0.2
+
+for i in xrange(num_epochs):
+    for j in xrange(0, len(trX), batch_size):
+        X, Y = trX[j:j+batch_size], trY[j:j+batch_size]
+        weights -= learn_rate * grads(X, Y, weights)
+    prediction = np.argmax(feed_forward(teX, weights)[-1], axis=1)
+    print i, np.mean(prediction == np.argmax(teY, axis=1))
+</code></pre>
+
+<p>If you run this code, you will get to about 97.8% accuracy on the test set.</p>
+
+<p><img src="/img/nn_training.png" alt="Neural Network Training" /></p>
+
+<p>The algorithm is practically the same as the original implementation. The net
+has one hidden layer with 100 neurons and uses mini batch gradient descent
+to learn the weights. It has two dependencies - <code>numpy</code>, which handles vector
+and matrix operations, and <code>mnist</code> which is a simple
+<a href="https://github.com/jrusev/simple-neural-networks/blob/master/src/mnist.py">script</a>
+that downloads the MNIST data and loads it to memory.</p>
+
+<p>The major difference is that instead of loops I use matrix operations, which
+means you can process the entire mini batch as a matrix instead of a single
+training example. As a result, the network is about 5 times faster than the
+original code, while you can still see what&rsquo;s going on under the hood. I&rsquo;ve also
+dropped the bias terms because in this problem they do not considerably improve
+accuracy.</p>
+
+<h3 id="implementation-in-a-class:2f5fc919e238dac1556de59dd7783f3d">Implementation in a class</h3>
+
+<p>I also implemented the same network in a class where I added the bias terms and
+also shuffle the training data each epoch. The code is available
+<a href="https://github.com/jrusev/simple-neural-networks/blob/master/src/network.py">here</a>.
+You can run it and plot the accuracy after each epoch like so:</p>
+
+<pre><code class="language-python">import network
+import mnist
+import matplotlib.pyplot as plt
+
+(trX, trY), _, (teX, teY) = mnist.load_data(one_hot=True)
+
+net = network.Network([784, 100, 10])
+acc = net.train(trX, trY, teX, teY, num_epochs=30, batch_size=10, learn_rate=0.2)
+
+plt.plot(acc)
+plt.show()
+</code></pre>
+
+<h3 id="implementation-with-theano:2f5fc919e238dac1556de59dd7783f3d">Implementation with Theano</h3>
+
+<p>Once we understand how backpropagation works, we can hide it by using a library
+such as Theano or Torch. So I implemented the exact same network as above using
+Theano also in 30 lines of code. Theano can calculate the gradients
+automatically after we compose the network graph. It&rsquo;s also about 2 times faster
+than the numpy-only implementation. Here is the code
+(<a href="https://github.com/jrusev/simple-neural-networks/blob/master/src/mlp_theano.py">source</a>):</p>
+
+<pre><code class="language-python">import theano
+import theano.tensor as T
+import numpy as np
+import mnist
+
+def init_weights(n_in, n_out):
+    weights = np.random.randn(n_in, n_out) / np.sqrt(n_in)
+    return theano.shared(np.asarray(weights, dtype=theano.config.floatX))
+
+def feed_forward(X, w_h, w_o):
+    h = T.nnet.sigmoid(T.dot(X, w_h))
+    return T.nnet.softmax(T.dot(h, w_o))
+
+(trX, trY), _, (teX, teY) = mnist.load_data(one_hot=True)
+
+w_h, w_o = init_weights(784, 100), init_weights(100, 10)
+num_epochs, batch_size, eta = 30, 10, 0.2
+
+X, Y = T.fmatrices('X', 'Y')
+out = feed_forward(X, w_h, w_o)
+cost = T.nnet.categorical_crossentropy(out, Y).mean()
+
+weights = [w_h, w_o]
+grads = T.grad(cost=cost, wrt=weights)
+apply_grads = theano.function(
+    inputs=[X, Y],
+    updates=[[w, w - g * eta] for w, g in zip(weights, grads)],
+    allow_input_downcast=True)
+predict = theano.function(inputs=[X], outputs=T.argmax(out, axis=1))
+
+for i in range(num_epochs):
+    for j in xrange(0, len(trX), batch_size):
+        apply_grads(trX[j:j+batch_size], trY[j:j+batch_size])
+    print i, np.mean(predict(teX) == np.argmax(teY, axis=1))
+</code></pre>
+
+	        </section>
+
+	        <section class="post-tags" style="padding-bottom:60px;">
+	            <div class="post-meta tags">
+	            <i class="fa fa-fw fa-tag"></i>
+	            
+	            <a href="http://jrusev.github.io/tags/neural%20networks">neural networks </a>
+	            
+	            <a href="http://jrusev.github.io/tags/machine%20learning">machine learning </a>
+	            
+	            <a href="http://jrusev.github.io/tags/python">python </a>
+	            
+	            <a href="http://jrusev.github.io/tags/numpy">numpy </a>
+	            
+	            <a href="http://jrusev.github.io/tags/MNIST">MNIST </a>
+	            
+	            </div>
+	        </section>
+			
+			
+			
+			
+
+	        <section class="share">
+	            <p class="backtotop"><a data-scroll href="#site-head"><i class="fa fa-lg fa-fw fa-angle-double-up"></i></a><a data-scroll class="backtotoptext" href="#site-head"> Back to top</a></p>
+	            <p class="info prompt">Share</p>
+	            <a href="http://twitter.com/share?text=Hacking%20MNIST%20in%2030%20lines%20of%20Python&url=http%3a%2f%2fjrusev.github.io%2fpost%2fhacking-mnist%2f" title="Share on Twitter"
+	                onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+	                <i class="fa fa-2x fa-fw fa-twitter-square"></i> <span class="hidden">Twitter</span>
+	            </a>
+	            <a href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fjrusev.github.io%2fpost%2fhacking-mnist%2f" title="Share on Facebook"
+	                onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+	                <i class="fa fa-2x fa-fw fa-facebook-square" style="margin-left: -8px"></i> <span class="hidden">Facebook</span>
+	            </a>
+	            <a href="https://plus.google.com/share?url=http%3a%2f%2fjrusev.github.io%2fpost%2fhacking-mnist%2f" title="Share on Google+"
+	               onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+	                <i class="fa fa-2x fa-fw fa-google-plus-square" style="margin-left: -8px"></i> <span class="hidden">Google+</span>
+	            </a>
+	        </section>
+
+	        <footer class="post-footer">
+	            <section class="author">
+    <div class="authorimage" style="background: url(http://jrusev.github.io/img/avatar.jpg)"></div>
+    <h4>Jivko Rusev</h4>
+    <p class="bio">Software engineer</p>
+    <p class="meta">
+      
+    </p>
+</section>
+	        </footer>
+	    </article>
+	</main>
+
+    <footer class="site-footer">
+	<div class="inner">
+		<section class="footer-social">
+			
+				<a href="//github.com/jrusev" target="_blank" title="GitHub"><i class="fa fa-2x fa-fw fa-github"></i> <span class="hidden">GitHub</span></a>&nbsp;
+			
+			
+				<a href="//facebook.com/jkrusev" target="_blank" title="Facebook"><i class="fa fa-2x fa-fw fa-facebook"></i> <span class="hidden">Facebook</span></a>&nbsp;
+			
+			
+	    	<a href="//twitter.com/JivkoRusev" target="_blank" title="Twitter"><i class="fa fa-2x fa-fw fa-twitter"></i> <span class="hidden">Twitter</span></a>&nbsp;
+	    
+			
+				<a href="//linkedin.com/in/jrusev" target="_blank" title="Linkedin"><i class="fa fa-2x fa-fw fa-linkedin"></i> <span class="hidden">Linkedin</span></a>&nbsp;
+			
+		</section>
+		<section class="copyright">&copy; 2016 <a href="http://jrusev.github.io/">Jivko Rusev</a>. </section>
+	</div>
+</footer>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="http://jrusev.github.io/js/index.js"></script>
+<script src="http://jrusev.github.io/js/smooth-scroll.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/highlight.min.js"></script>
+
+<script>
+    smoothScroll.init({
+        speed: 800,
+        easing: 'easeInOutCubic',
+        updateURL: false,
+        offset: 125,
+    });
+</script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+</body>
+</html>
