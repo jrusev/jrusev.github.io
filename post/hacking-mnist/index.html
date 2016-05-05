@@ -133,26 +133,6 @@ original code, while you can still see what&rsquo;s going on under the hood. I&r
 dropped the bias terms because in this problem they do not considerably improve
 accuracy.</p>
 
-<h3 id="implementation-in-a-class:2f5fc919e238dac1556de59dd7783f3d">Implementation in a class</h3>
-
-<p>I also implemented the same network in a class where I added the bias terms and
-also shuffle the training data each epoch. The code is available
-<a href="https://github.com/jrusev/simple-neural-networks/blob/master/network.py">here</a>.
-You can run it and plot the accuracy after each epoch like so:</p>
-
-<pre><code class="language-python">import network
-import mnist
-import matplotlib.pyplot as plt
-
-(trX, trY), _, (teX, teY) = mnist.load_data(one_hot=True)
-
-net = network.Network([784, 100, 10])
-acc = net.train(trX, trY, teX, teY, num_epochs=30, batch_size=10, learn_rate=0.2)
-
-plt.plot(acc)
-plt.show()
-</code></pre>
-
 <h3 id="implementation-with-theano:2f5fc919e238dac1556de59dd7783f3d">Implementation with Theano</h3>
 
 <p>Once we understand how backpropagation works, we can hide it by using a library
