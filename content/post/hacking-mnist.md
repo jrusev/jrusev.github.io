@@ -22,7 +22,7 @@ built upon just this classification problem, but the simplest implementation is
 [140 lines](https://github.com/mnielsen/neural-networks-and-deep-learning/blob/master/src/network.py)
 of code (or 74 without the comments). So I took that code and refactored it down
 to 30 lines. Here it is (GitHub
-[repo](https://github.com/jrusev/simple-neural-networks/blob/master/src/mlp_numpy.py)):
+[repo](https://github.com/jrusev/simple-neural-networks/blob/master/mlp_numpy.py)):
 
 ```python
 import numpy as np
@@ -70,7 +70,7 @@ The algorithm is practically the same as the original implementation. The net
 has one hidden layer with 100 neurons and uses mini batch gradient descent
 to learn the weights. It has two dependencies - `numpy`, which handles vector
 and matrix operations, and `mnist` which is a simple
-[script](https://github.com/jrusev/simple-neural-networks/blob/master/src/mnist.py)
+[script](https://github.com/jrusev/simple-neural-networks/blob/master/mnist.py)
 that downloads the MNIST data and loads it to memory.
 
 The major difference is that instead of loops I use matrix operations, which
@@ -84,7 +84,7 @@ accuracy.
 
 I also implemented the same network in a class where I added the bias terms and
 also shuffle the training data each epoch. The code is available
-[here](https://github.com/jrusev/simple-neural-networks/blob/master/src/network.py).
+[here](https://github.com/jrusev/simple-neural-networks/blob/master/network.py).
 You can run it and plot the accuracy after each epoch like so:
 
 ```python
@@ -108,7 +108,7 @@ such as Theano or Torch. So I implemented the exact same network as above using
 Theano also in 30 lines of code. Theano can calculate the gradients
 automatically after we compose the network graph. It's also about 2 times faster
 than the numpy-only implementation. Here is the code
-([source](https://github.com/jrusev/simple-neural-networks/blob/master/src/mlp_theano.py)):
+([source](https://github.com/jrusev/simple-neural-networks/blob/master/mlp_theano.py)):
 
 ```python
 import theano
