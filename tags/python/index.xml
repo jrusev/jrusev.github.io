@@ -33,7 +33,7 @@ built upon just this classification problem, but the simplest implementation is
 &lt;a href=&#34;https://github.com/mnielsen/neural-networks-and-deep-learning/blob/master/src/network.py&#34;&gt;140 lines&lt;/a&gt;
 of code (or 74 without the comments). So I took that code and refactored it down
 to 30 lines. Here it is (GitHub
-&lt;a href=&#34;https://github.com/jrusev/simple-neural-networks/blob/master/src/mlp_numpy.py&#34;&gt;repo&lt;/a&gt;):&lt;/p&gt;
+&lt;a href=&#34;https://github.com/jrusev/simple-neural-networks/blob/master/mlp_numpy.py&#34;&gt;repo&lt;/a&gt;):&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import numpy as np
 import mnist
@@ -80,7 +80,7 @@ for i in xrange(num_epochs):
 has one hidden layer with 100 neurons and uses mini batch gradient descent
 to learn the weights. It has two dependencies - &lt;code&gt;numpy&lt;/code&gt;, which handles vector
 and matrix operations, and &lt;code&gt;mnist&lt;/code&gt; which is a simple
-&lt;a href=&#34;https://github.com/jrusev/simple-neural-networks/blob/master/src/mnist.py&#34;&gt;script&lt;/a&gt;
+&lt;a href=&#34;https://github.com/jrusev/simple-neural-networks/blob/master/mnist.py&#34;&gt;script&lt;/a&gt;
 that downloads the MNIST data and loads it to memory.&lt;/p&gt;
 
 &lt;p&gt;The major difference is that instead of loops I use matrix operations, which
@@ -94,7 +94,7 @@ accuracy.&lt;/p&gt;
 
 &lt;p&gt;I also implemented the same network in a class where I added the bias terms and
 also shuffle the training data each epoch. The code is available
-&lt;a href=&#34;https://github.com/jrusev/simple-neural-networks/blob/master/src/network.py&#34;&gt;here&lt;/a&gt;.
+&lt;a href=&#34;https://github.com/jrusev/simple-neural-networks/blob/master/network.py&#34;&gt;here&lt;/a&gt;.
 You can run it and plot the accuracy after each epoch like so:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import network
@@ -117,7 +117,7 @@ such as Theano or Torch. So I implemented the exact same network as above using
 Theano also in 30 lines of code. Theano can calculate the gradients
 automatically after we compose the network graph. It&amp;rsquo;s also about 2 times faster
 than the numpy-only implementation. Here is the code
-(&lt;a href=&#34;https://github.com/jrusev/simple-neural-networks/blob/master/src/mlp_theano.py&#34;&gt;source&lt;/a&gt;):&lt;/p&gt;
+(&lt;a href=&#34;https://github.com/jrusev/simple-neural-networks/blob/master/mlp_theano.py&#34;&gt;source&lt;/a&gt;):&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import theano
 import theano.tensor as T
