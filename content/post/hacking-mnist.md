@@ -47,7 +47,7 @@ def grads(X, Y, weights):
 sigmoid = lambda x: 1 / (1 + np.exp(-x))
 d_sigmoid = lambda y: y * (1 - y)
 
-(trX, trY), _, (teX, teY) = mnist.load_data(one_hot=True)
+trX, trY, teX, teY = mnist.load_data(one_hot=True)
 
 weights = [
     np.random.randn(784, 100) / np.sqrt(784),
@@ -80,48 +80,9 @@ original code, while you can still see what's going on under the hood. I've also
 dropped the bias terms because in this problem they do not considerably improve
 accuracy.
 
-### Implementation with Theano
+### Implementation with a high-level ML library
 
-Once we understand how backpropagation works, we can hide it by using a library
-such as Theano or Torch. So I implemented the exact same network as above using
-Theano also in 30 lines of code. Theano can calculate the gradients
-automatically after we compose the network graph. It's also about 2 times faster
-than the numpy-only implementation. Here is the code
-([source](https://github.com/jrusev/simple-neural-networks/blob/master/mlp_theano.py)):
-
-```python
-import theano
-import theano.tensor as T
-import numpy as np
-import mnist
-
-def init_weights(n_in, n_out):
-    weights = np.random.randn(n_in, n_out) / np.sqrt(n_in)
-    return theano.shared(np.asarray(weights, dtype=theano.config.floatX))
-
-def feed_forward(X, w_h, w_o):
-    h = T.nnet.sigmoid(T.dot(X, w_h))
-    return T.nnet.softmax(T.dot(h, w_o))
-
-(trX, trY), _, (teX, teY) = mnist.load_data(one_hot=True)
-
-w_h, w_o = init_weights(784, 100), init_weights(100, 10)
-num_epochs, batch_size, eta = 30, 10, 0.2
-
-X, Y = T.fmatrices('X', 'Y')
-out = feed_forward(X, w_h, w_o)
-cost = T.nnet.categorical_crossentropy(out, Y).mean()
-
-weights = [w_h, w_o]
-grads = T.grad(cost=cost, wrt=weights)
-apply_grads = theano.function(
-    inputs=[X, Y],
-    updates=[[w, w - g * eta] for w, g in zip(weights, grads)],
-    allow_input_downcast=True)
-predict = theano.function(inputs=[X], outputs=T.argmax(out, axis=1))
-
-for i in range(num_epochs):
-    for j in xrange(0, len(trX), batch_size):
-        apply_grads(trX[j:j+batch_size], trY[j:j+batch_size])
-    print i, np.mean(predict(teX) == np.argmax(teY, axis=1))
-```
+Once we understand how backpropagation works, we can hide the complexity by
+using a machine learning library. So I implemented the exact same network as
+above using Theano, TensorFlow, Keras and Torch - see
+[here](https://github.com/jrusev/simple-neural-networks).
