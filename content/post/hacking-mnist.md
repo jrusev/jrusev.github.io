@@ -19,10 +19,10 @@ example - a neural net that could recognize handwritten digits from the
 Michael Nielsen's
 [great book](http://neuralnetworksanddeeplearning.com/) on neural networks is
 built upon just this classification problem, but the simplest implementation is
-[140 lines](https://github.com/mnielsen/neural-networks-and-deep-learning/blob/master/src/network.py)
-of code (or 74 without the comments). So I took that code and refactored it down
-to 30 lines. Here it is (GitHub
-[repo](https://github.com/jrusev/simple-neural-networks/blob/master/mlp_numpy.py)):
+[74 lines](https://github.com/mnielsen/neural-networks-and-deep-learning/blob/master/src/network.py)
+of code (without the comments). So I took that code and refactored it down
+to 25 lines
+([source](https://github.com/jrusev/simple-neural-networks/blob/master/mlp_numpy_relu.py)):
 
 ```python
 import numpy as np
@@ -31,28 +31,22 @@ import mnist
 def feed_forward(X, weights):
     a = [X]
     for w in weights:
-        a.append(sigmoid(a[-1].dot(w)))
+        a.append(np.maximum(a[-1].dot(w),0))
     return a
 
 def grads(X, Y, weights):
     grads = np.empty_like(weights)
     a = feed_forward(X, weights)
-    delta = a[-1] - Y # cross-entropy
-    grads[-1] = np.dot(a[-2].T, delta)
+    delta = a[-1] - Y
+    grads[-1] = a[-2].T.dot(delta)
     for i in xrange(len(a)-2, 0, -1):
-        delta = np.dot(delta, weights[i].T) * d_sigmoid(a[i])
-        grads[i-1] = np.dot(a[i-1].T, delta)
+        delta = (a[i] > 0) * delta.dot(weights[i].T)
+        grads[i-1] = a[i-1].T.dot(delta)
     return grads / len(X)
 
-sigmoid = lambda x: 1 / (1 + np.exp(-x))
-d_sigmoid = lambda y: y * (1 - y)
-
-trX, trY, teX, teY = mnist.load_data(one_hot=True)
-
-weights = [
-    np.random.randn(784, 100) / np.sqrt(784),
-    np.random.randn(100, 10) / np.sqrt(100)]
-num_epochs, batch_size, learn_rate = 30, 10, 0.2
+trX, trY, teX, teY = mnist.load_data()
+weights = [np.random.randn(*w) * 0.1 for w in [(784, 100), (100, 10)]]
+num_epochs, batch_size, learn_rate = 30, 20, 0.1
 
 for i in xrange(num_epochs):
     for j in xrange(0, len(trX), batch_size):
@@ -74,11 +68,13 @@ and matrix operations, and `mnist` which is a simple
 that downloads the MNIST data and loads it to memory.
 
 The major difference is that instead of loops I use matrix operations, which
-means you can process the entire mini batch as a matrix instead of a single
-training example. As a result, the network is about 5 times faster than the
-original code, while you can still see what's going on under the hood. I've also
-dropped the bias terms because in this problem they do not considerably improve
-accuracy.
+means you can process the entire mini batch as a matrix instead of iterating
+over each training example. As a result, the training is about 5 times faster
+than the original code, while you can still see what's going on under the hood.
+I changed the activation function from sigmoid to ReLU, which is just
+`f(x) = max(0, x)` and its derivative is as simple as `x > 0` (applied
+element-wise). I've also dropped the bias terms because in this problem they do
+not considerably improve accuracy.
 
 ### Implementation with a high-level ML library
 
