@@ -16,9 +16,9 @@ So I have finally finished the [Telerik Software Academy]
 (http://academy.telerik.com/) and it was a transforming experience. Before I
 started the Academy I asked some friends of mine who were developers, if it is
 possible to become a junior level developer in 1 year starting from zero. I
-didn't exactly start from zero, I learned BASIC and Assembler when I was a kid,
+didn't exactly start from zero, I learned BASIC and Assembly when I was a kid,
 and later enough C++ to write a Bulls & Cows game, but I knew nothing about
-modern web or game development. No idea what JavaScript, CSS or OOP was. And so
+modern web or game development. No idea what JavaScript, CSS or SQL was. And so
 were most of the other students.
 
 Now I know for certain that it is possible to become a junior developer in about
