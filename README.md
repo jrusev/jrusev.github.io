@@ -69,3 +69,7 @@ This is how to create a new post and make it live using Hugo:
 
   * Your new content should be live shortly - fire up a browser and go to
   [http://jrusev.github.io](http://jrusev.github.io).
+  
+## Automatic build and deployment
+
+You can automate the publish step (and avoid pushing to master) if you host your site on [GitLab](https://pages.gitlab.io/). You will need to add a `.gitlab-ci.yml` file to the root directory of your repository ([example](https://gitlab.com/pages/hugo/blob/master/.gitlab-ci.yml)), and configure your GitLab project to use a [Runner](https://docs.gitlab.com/ce/ci/runners/README.html). Then each commit or push, will trigger your CI pipeline (`pages` is a special job that is used to upload static content to GitLab that can be used to serve your website).
